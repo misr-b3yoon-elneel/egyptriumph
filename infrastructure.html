@@ -1,0 +1,782 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Infrastructure | Egypt's Triumph</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;700;900&display=swap');
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero-pattern {
+            background-color: #f9f7f7;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e4e2e2' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .pyramid-bg {
+            position: relative;
+        }
+        
+        .pyramid-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' width='100' height='100' opacity='0.05'%3E%3Cpolygon points='50,10 90,90 10,90' fill='%23000000'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        .egypt-gradient {
+            background: linear-gradient(135deg, rgba(206,17,38,0.05) 0%, rgba(255,255,255,0.1) 50%, rgba(0,0,0,0.05) 100%);
+        }
+        
+        .flag {
+            transform: translateY(-30px);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #ce1126;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .active::after {
+            width: 100%;
+        }
+        
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .comparison-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .comparison-before, .comparison-after {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .comparison-before {
+            width: 50%;
+            overflow: hidden;
+            z-index: 2;
+            border-right: 2px solid white;
+        }
+        
+        .comparison-slider {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: white;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            cursor: ew-resize;
+            touch-action: none;
+        }
+        
+        .comparison-slider::before {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #ce1126;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .comparison-label {
+            position: absolute;
+            padding: 0.25rem 0.5rem;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            font-size: 0.75rem;
+            border-radius: 0.25rem;
+            z-index: 4;
+        }
+        
+        .before-label {
+            left: 10px;
+            top: 10px;
+        }
+        
+        .after-label {
+            right: 10px;
+            top: 10px;
+        }
+        
+        .slider-note {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            z-index: 5;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .slider-note.hidden {
+            opacity: 0;
+        }
+        
+        .infra-image {
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .infra-image:hover {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full z-10">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-full h-full flag">
+                        <img class="flag" src="eg.png" alt="egypt's flag" style="margin-right: 25px;">
+                    </svg>
+                </div>
+                <h1 class="text-2xl font-bold text-gray-800">Egypt's Triumph</h1>
+            </div>
+            
+            <div class="hidden md:flex space-x-8">
+                <a href="home.html" class="nav-link text-gray-600 hover:text-gray-800">Home</a>
+                <a href="social.html" class="nav-link text-gray-600 hover:text-gray-800">Social Development</a>
+                <a href="#" class="nav-link active text-gray-800 font-medium">Infrastructure</a>
+                <a href="gallery.html" class="nav-link text-gray-600 hover:text-gray-800">Gallery</a>
+                <a href="about.html" class="nav-link text-gray-600 hover:text-gray-800">About</a>
+                <a href="infrastructure_ar.html" class="nav-link text-gray-600 hover:text-gray-800 flex items-center space-x-1">
+                    <i class="fas fa-globe"></i>
+                    <span>العربية</span>
+                </a>
+            </div>
+            
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-gray-600 hover:text-gray-800 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <div class="container mx-auto px-4 py-2 space-y-3">
+                <a href="home.html" class="block py-2 text-gray-600 hover:text-gray-800">Home</a>
+                <a href="social.html" class="block py-2 text-gray-600 hover:text-gray-800">Social Development</a>
+                <a href="#" class="block py-2 text-gray-800 font-medium">Infrastructure</a>
+                <a href="gallery.html" class="block py-2 text-gray-600 hover:text-gray-800">Gallery</a>
+                <a href="about.html" class="block py-2 text-gray-600 hover:text-gray-800">About</a>
+                <a href="infrastructure_ar.html" class="block py-2 text-gray-600 hover:text-gray-800 flex items-center">
+                    <i class="fas fa-globe mr-2"></i> العربية
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header data-aos="fade-up" class="pt-24 pb-16 hero-pattern pyramid-bg">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 leading-tight">Infrastructure <span class="text-red-700">Revolution</span></h1>
+                    <p class="mt-4 text-xl text-gray-600">Egypt's massive infrastructure leap: modern transportation, sustainable cities, and mega projects transforming the nation.</p>
+                    <div class="mt-8">
+                        <a href="#metro" class="px-6 py-3 bg-red-700 text-white font-medium rounded-md hover:bg-red-800 transition duration-300 shadow-md">Explore Projects</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative w-full max-w-md">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" class="w-full h-auto">
+                            <!-- Egypt Map with Infrastructure Icons -->
+                            <path d="M400,100 C550,150 650,300 600,450 C550,600 400,550 300,500 C200,450 150,350 200,250 C250,150 350,80 400,100 Z" fill="#f0f0f0" stroke="#ce1126" stroke-width="8"></path>
+                            <!-- Infrastructure Icons -->
+                            <circle cx="300" cy="200" r="30" fill="#10b981"></circle>
+                            <text x="300" y="200" font-family="Arial" font-size="20" fill="white" text-anchor="middle" dominant-baseline="middle">🚇</text>
+                            
+                            <circle cx="500" cy="250" r="30" fill="#3b82f6"></circle>
+                            <text x="500" y="250" font-family="Arial" font-size="20" fill="white" text-anchor="middle" dominant-baseline="middle">🚄</text>
+                            
+                            <circle cx="450" cy="400" r="30" fill="#f59e0b"></circle>
+                            <text x="450" y="400" font-family="Arial" font-size="20" fill="white" text-anchor="middle" dominant-baseline="middle">🏙️</text>
+                            
+                            <circle cx="350" cy="450" r="30" fill="#ef4444"></circle>
+                            <text x="350" y="450" font-family="Arial" font-size="20" fill="white" text-anchor="middle" dominant-baseline="middle">💧</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Key Projects Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Mega Infrastructure Projects</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
+                <!-- Metro Card -->
+                <div data-aos="fade-up" class="card bg-gradient-to-br from-red-50 to-white rounded-lg shadow-md p-6 border border-red-100">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-subway text-2xl text-red-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2" id="metro">Cairo Metro</h3>
+                    <p class="text-gray-600">Africa's first metro system expanding with new lines and modern trains.</p>
+                    <a href="#metro-section" class="mt-4 inline-block text-red-700 font-medium hover:underline">See more →</a>
+                </div>
+                
+                <!-- Monorail Card -->
+                <div data-aos="fade-up" class="card bg-gradient-to-br from-blue-50 to-white rounded-lg shadow-md p-6 border border-blue-100">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-train text-2xl text-blue-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Egyptian Monorail</h3>
+                    <p class="text-gray-600">Africa's first monorail system connecting key areas to Greater Cairo.</p>
+                    <a href="#monorail-section" class="mt-4 inline-block text-blue-700 font-medium hover:underline">See more →</a>
+                </div>
+                
+                <!-- Capital Card -->
+                <div data-aos="fade-up" class="card bg-gradient-to-br from-emerald-50 to-white rounded-lg shadow-md p-6 border border-emerald-100">
+                    <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-city text-2xl text-emerald-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">New Capital</h3>
+                    <p class="text-gray-600">Smart, sustainable city with modern infrastructure and green spaces.</p>
+                    <a href="#capital-section" class="mt-4 inline-block text-emerald-700 font-medium hover:underline">Learn more →</a>
+                </div>
+                
+                <!-- Roads Card -->
+                <div data-aos="fade-up" class="card bg-gradient-to-br from-amber-50 to-white rounded-lg shadow-md p-6 border border-amber-100">
+                    <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-road text-2xl text-amber-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Roads Network</h3>
+                    <p class="text-gray-600">Massive expansion of highways, bridges and tunnels nationwide.</p>
+                    <a href="#roads-section" class="mt-4 inline-block text-amber-700 font-medium hover:underline">See more →</a>
+                </div>
+                
+                <!-- Asmarat Card -->
+                <div data-aos="fade-up" class="card bg-gradient-to-br from-purple-50 to-white rounded-lg shadow-md p-6 border border-purple-100">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-home text-2xl text-purple-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Asmarat District</h3>
+                    <p class="text-gray-600">Transforming informal areas into modern, integrated communities.</p>
+                    <a href="#asmarat-section" class="mt-4 inline-block text-purple-700 font-medium hover:underline">Learn more →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Bahr El Baqar Plant Section -->
+        <section class="py-16 bg-white" id="bahr-el-baqar">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl text-red-700 md:text-4xl font-bold text-center mb-12">Bahr El Baqar Water Treatment Plant</h2>
+                
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                        <h3 class="text-2xl font-bold mb-4">World's Largest Water Treatment Plant</h3>
+                        <p class="text-gray-600 mb-6">The Bahr El Baqar Water Treatment Plant is a monumental achievement in Egypt's water infrastructure, with capacity to treat 5.6 million cubic meters of agricultural drainage water daily.</p>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-2">Key Features:</h4>
+                                <ul class="text-gray-600 space-y-1">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-emerald-700 mt-1 mr-2"></i>
+                                        <span>World's largest water treatment plant by capacity</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-emerald-700 mt-1 mr-2"></i>
+                                        <span>Recycles agricultural drainage water for irrigation</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-emerald-700 mt-1 mr-2"></i>
+                                        <span>Supports reclamation of 400,000 acres of desert land</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-emerald-700 mt-1 mr-2"></i>
+                                        <span>Uses advanced multi-stage treatment technology</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-1/2">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="col-span-2">
+                                <img src="imgs/1 (2).jpg" alt="Bahr El Baqar Plant" class="w-full h-64 object-cover infra-image">
+                            </div>
+                            <div>
+                                <img src="imgs/1 (1).JPG" alt="Plant Overview" class="w-full h-48 object-cover infra-image">
+                            </div>
+                            <div>
+                                <img src="imgs/1 (3).jpg" alt="Treatment Process" class="w-full h-48 object-cover infra-image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <!-- Metro Section -->
+    <section data-aos="fade-up" class="py-16 bg-gray-50 egypt-gradient" id="metro-section">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Cairo Metro Expansion</h2>
+                    <p class="text-gray-600 mb-4">The Cairo Metro, Africa's first underground transportation system, has undergone massive expansion to serve the growing population of Greater Cairo.</p>
+                    <p class="text-gray-600 mb-6">With new lines and modern trains, the metro now transports over 4 million passengers daily, reducing traffic congestion and pollution.</p>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-bold text-red-700 mb-1">4+</h4>
+                            <p class="text-sm text-gray-600">Operational Lines</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-bold text-red-700 mb-1">74</h4>
+                            <p class="text-sm text-gray-600">Stations</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-bold text-red-700 mb-1">93km</h4>
+                            <p class="text-sm text-gray-600">Network Length</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-bold text-red-700 mb-1">4M+</h4>
+                            <p class="text-sm text-gray-600">Daily Passengers</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="col-span-2">
+                            <img src="imgs/met 1.jpg" alt="Cairo Metro Station" class="w-full h-64 object-cover infra-image">
+                        </div>
+                        <div>
+                            <img src="imgs/logo lel metro.png" class="w-full h-48 object-cover infra-image">
+                        </div>
+                        <div>
+                            <img src="imgs/met3 (1).jpg" alt="Metro Interior" class="w-full h-48 object-cover infra-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Monorail Section -->
+    <section class="py-16 bg-white" id="monorail-section">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl text-red-700 md:text-4xl font-bold text-center mb-12">Egyptian Monorail System</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div data-aos="fade-right">
+                    <h3 class="text-2xl font-bold mb-4">Africa's First Monorail</h3>
+                    <p class="text-gray-600 mb-6">Egypt is building Africa's first monorail system with two lines connecting the New Administrative Capital and 6th of October City to Greater Cairo, revolutionizing urban transportation.</p>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800 mb-2">Key Features:</h4>
+                            <ul class="text-gray-600 space-y-1">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-emerald-700 mt-1 mr-2"></i>
+                                    <span>Two lines totaling 96.6 km in length</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-emerald-700 mt-1 mr-2"></i>
+                                    <span>34 fully automated, driverless trains</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-emerald-700 mt-1 mr-2"></i>
+                                    <span>Capacity for 45,000 passengers per hour</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-emerald-700 mt-1 mr-2"></i>
+                                    <span>Reduces traffic congestion and pollution</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div data-aos="fade-left">
+                    <div class="comparison-container" style="height: 400px;">
+                        <div class="comparison-before">
+                            <img src="imgs/otobeesy.jfif" alt="Area before monorail" class="w-full h-full object-cover">
+                            <span class="comparison-label before-label">Before</span>
+                        </div>
+                        <div class="comparison-after">
+                            <img src="imgs/mono.jfif" alt="Monorail construction" class="w-full h-full object-cover">
+                            <span class="comparison-label after-label">After</span>
+                        </div>
+                        <div class="comparison-slider"></div>
+                        <div class="slider-note">← Slide to see the difference →</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Administrative Capital Section -->
+    <section class="py-16 bg-gray-50" id="capital-section">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl text-red-700 md:text-4xl font-bold text-center mb-12">New Administrative Capital</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div data-aos="fade-right" class="md:order-2">
+                    <h3 class="text-2xl font-bold mb-4">Egypt's Smart Future City</h3>
+                    <p class="text-gray-600 mb-6">The New Administrative Capital is a planned city covering 700 square kilometers, designed to alleviate congestion in Cairo and serve as Egypt's new governmental and financial hub.</p>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800 mb-2">Key Features:</h4>
+                            <ul class="text-gray-600 space-y-1">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-emerald-700 mt-1 mr-2"></i>
+                                    <span>Africa's tallest tower (Iconic Tower at 385m)</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-emerald-700 mt-1 mr-2"></i>
+                                    <span>Smart city with advanced digital infrastructure</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-emerald-700 mt-1 mr-2"></i>
+                                    <span>Green spaces covering 40% of the city area</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-emerald-700 mt-1 mr-2"></i>
+                                    <span>Modern transportation networks including monorail</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div data-aos="fade-left" class="md:order-1">
+                    <div class="comparison-container" style="height: 400px;">
+                        <div class="comparison-before">
+                            <img src="imgs/صورة-جوية-لمدينة-القاهرة.jpg" alt="Desert before construction" class="w-full h-full object-cover">
+                            <span class="comparison-label before-label">Before</span>
+                        </div>
+                        <div class="comparison-after">
+                            <img src="imgs/مميزات-العاصمة-الإدارية-الجديدة.jpg" alt="Capital construction progress" class="w-full h-full object-cover">
+                            <span class="comparison-label after-label">After</span>
+                        </div>
+                        <div class="comparison-slider"></div>
+                        <div class="slider-note">← Slide to see the difference →</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roads Improvement Section -->
+    <section class="py-16 bg-white" id="roads-section">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl text-red-700 md:text-4xl font-bold text-center mb-12">Roads Network Development</h2>
+            
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <h3 class="text-2xl font-bold mb-4">Transforming Egypt's Transportation</h3>
+                    <p class="text-gray-600 mb-6">Egypt has invested heavily in expanding and modernizing its road network, adding thousands of kilometers of new roads, bridges, and tunnels to connect cities and reduce travel times.</p>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800 mb-2">Key Achievements:</h4>
+                            <ul class="text-gray-600 space-y-1">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-emerald-700 mt-1 mr-2"></i>
+                                    <span>7,000+ km of new roads constructed nationwide</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-emerald-700 mt-1 mr-2"></i>
+                                    <span>Dozens of new bridges and interchanges</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-emerald-700 mt-1 mr-2"></i>
+                                    <span>Modern highways connecting all governorates</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-emerald-700 mt-1 mr-2"></i>
+                                    <span>Intelligent transportation systems implemented</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="col-span-2">
+                            <img src="imgs/r1.jpeg" alt="Modern Egyptian highway" class="w-full h-64 object-cover infra-image">
+                        </div>
+                        <div>
+                            <img src="imgs/r2.jpeg" alt="Road construction" class="w-full h-48 object-cover infra-image">
+                        </div>
+                        <div>
+                            <img src="imgs/r3.jpeg" alt="Bridge construction" class="w-full h-48 object-cover infra-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Asmarat District Section -->
+    <section class="py-16 bg-gray-50" id="asmarat-section">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl text-red-700 md:text-4xl font-bold text-center mb-12">Asmarat District Development</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div data-aos="fade-right">
+                    <h3 class="text-2xl font-bold mb-4">Transforming Informal Areas</h3>
+                    <p class="text-gray-600 mb-6">The Asmarat district represents a major achievement in urban development, transforming informal settlements into modern, integrated communities with full services and infrastructure.</p>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800 mb-2">Project Features:</h4>
+                            <ul class="text-gray-600 space-y-1">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-emerald-700 mt-1 mr-2"></i>
+                                    <span>11,000 housing units built in first phase</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-emerald-700 mt-1 mr-2"></i>
+                                    <span>Complete infrastructure including water, sewage, electricity</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-emerald-700 mt-1 mr-2"></i>
+                                    <span>Schools, medical centers, and commercial areas</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-emerald-700 mt-1 mr-2"></i>
+                                    <span>Green spaces and community facilities</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div data-aos="fade-left">
+                    <div class="comparison-container" style="height: 400px;">
+                        <div class="comparison-before">
+                            <img src="imgs/87479-تطوير-العشوائيات-فى-القاهرة-(13).jpg" alt="Informal settlement before" class="w-full h-full object-cover">
+                            <span class="comparison-label before-label">Before</span>
+                        </div>
+                        <div class="comparison-after">
+                            <img src="imgs/th.jpg" alt="Asmarat district after" class="w-full h-full object-cover">
+                            <span class="comparison-label after-label">After</span>
+                        </div>
+                        <div class="comparison-slider"></div>
+                        <div class="slider-note">← Slide to see the difference →</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Call to Action -->
+    <section data-aos="fade-up" class="py-16 bg-red-700 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Explore More Achievements</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Discover how Egypt has transformed its social services and quality of life over the past decade.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="social.html" class="px-6 py-3 bg-white text-red-700 font-medium rounded-md hover:bg-gray-100 transition duration-300 shadow-md">Social Development</a>
+                <a href="gallery.html" class="px-6 py-3 border-2 border-white text-white font-medium rounded-md hover:bg-red-800 transition duration-300">View Gallery</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-10 h-10">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-full h-full">
+                                <img class="flag" src="eg.png" alt="egypt's flag">
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold">Egypt's Triumph</h3>
+                    </div>
+                    <p class="text-gray-400">Celebrating a decade of remarkable progress and transformation across Egypt.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="home.html" class="text-gray-400 hover:text-white transition duration-300">Home</a></li>
+                        <li><a href="social.html" class="text-gray-400 hover:text-white transition duration-300">Social Development</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Infrastructure</a></li>
+                        <li><a href="gallery.html" class="text-gray-400 hover:text-white transition duration-300">Gallery</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition duration-300">About</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2024 Egypt's Triumph. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init();
+        
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Image comparison slider
+        function initComparisons() {
+            const sliders = document.querySelectorAll('.comparison-container');
+            
+            sliders.forEach(container => {
+                const before = container.querySelector('.comparison-before');
+                const slider = container.querySelector('.comparison-slider');
+                const note = container.querySelector('.slider-note');
+                let isDragging = false;
+                let noteHidden = false;
+                
+                function moveSlider(e) {
+                    if (!isDragging) return;
+                    
+                    if (!noteHidden) {
+                        note.classList.add('hidden');
+                        noteHidden = true;
+                    }
+                    
+                    const rect = container.getBoundingClientRect();
+                    let x;
+                    
+                    if (e.type === 'mousemove') {
+                        x = e.clientX - rect.left;
+                    } else if (e.type === 'touchmove') {
+                        x = e.touches[0].clientX - rect.left;
+                    }
+                    
+                    // Constrain x to container bounds
+                    x = Math.max(0, Math.min(x, rect.width));
+                    
+                    const percent = (x / rect.width) * 100;
+                    before.style.width = percent + '%';
+                    slider.style.left = percent + '%';
+                }
+                
+                // Mouse events
+                slider.addEventListener('mousedown', (e) => {
+                    e.preventDefault();
+                    isDragging = true;
+                    note.classList.add('hidden');
+                    noteHidden = true;
+                });
+                
+                window.addEventListener('mouseup', () => {
+                    isDragging = false;
+                });
+                
+                window.addEventListener('mousemove', moveSlider);
+                
+                // Touch events
+                slider.addEventListener('touchstart', (e) => {
+                    e.preventDefault();
+                    isDragging = true;
+                    note.classList.add('hidden');
+                    noteHidden = true;
+                });
+                
+                window.addEventListener('touchend', () => {
+                    isDragging = false;
+                });
+                
+                window.addEventListener('touchmove', moveSlider);
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', initComparisons);
+    </script>
+</body>
+</html>

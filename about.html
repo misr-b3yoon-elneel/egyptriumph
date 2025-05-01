@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Egypt's Triumph</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;700;900&display=swap');
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero-pattern {
+            background-color: #f9f7f7;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e4e2e2' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+
+        /* Fixed Team Card Styles */
+        .team-card {
+            perspective: 1000px;
+            height: 400px; /* Fixed height */
+        }
+        
+        .team-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+        
+        .team-card:hover .team-card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .team-card-front, .team-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 0.75rem;
+            overflow: hidden;
+        }
+        
+        .team-card-back {
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+    </style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;700;900&display=swap');
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero-pattern {
+            background-color: #f9f7f7;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e4e2e2' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .pyramid-bg {
+            position: relative;
+        }
+        
+        .pyramid-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' width='100' height='100' opacity='0.05'%3E%3Cpolygon points='50,10 90,90 10,90' fill='%23000000'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        .egypt-gradient {
+            background: linear-gradient(135deg, rgba(206,17,38,0.05) 0%, rgba(255,255,255,0.1) 50%, rgba(0,0,0,0.05) 100%);
+        }
+        
+        .flag {
+            transform: translateY(-30px);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #ce1126;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .active::after {
+            width: 100%;
+        }
+        
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .comparison-slider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    border-radius: 10px;
+    width: 4px;
+    background: white;
+    left: 50%; /* Changed from right to left */
+    transform: translateX(-50%);
+    z-index: 3;
+    cursor: ew-resize;
+    touch-action: none; /* Prevent default touch behavior */
+}
+
+.comparison-before {
+    width: 50%;
+    overflow: hidden;
+    z-index: 2;
+    border-right: 2px solid white;
+    pointer-events: none; /* Prevent content interference */
+}
+
+.comparison-container {
+    user-select: none; /* Prevent text selection while dragging */
+}
+        
+        .comparison-before, .comparison-after {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .comparison-before {
+            width: 50%;
+            overflow: hidden;
+            z-index: 2;
+            border-right: 2px solid white;
+        }
+        
+        .comparison-slider {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: white;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            cursor: ew-resize;
+        }
+        
+        .comparison-slider::before {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #ce1126;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .comparison-label {
+            position: absolute;
+            padding: 0.25rem 0.5rem;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            font-size: 0.75rem;
+            border-radius: 0.25rem;
+            z-index: 4;
+        }
+        
+        .before-label {
+            left: 10px;
+            top: 10px;
+        }
+        
+        .after-label {
+            right: 10px;
+            top: 10px;
+        }
+        
+        .slider-note {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            z-index: 5;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .slider-note.hidden {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full z-10">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-full h-full flag">
+                        <img class="flag" src="eg.png" alt="egypt's flag" style="margin-right: 25px;transform: translateY(-30px);">
+                    </svg>
+                </div>
+                <h1 class="text-2xl font-bold text-gray-800">Egypt's Triumph</h1>
+            </div>
+            
+            <div class="hidden md:flex space-x-8">
+                <a href="home.html" class="nav-link text-gray-600 hover:text-gray-800">Home</a>
+                <a href="social.html" class="nav-link text-gray-600 hover:text-gray-800">Social Development</a>
+                <a href="infrastructure.html" class="nav-link text-gray-600 hover:text-gray-800">Infrastructure</a>
+                <a href="gallery.html" class="nav-link text-gray-600 hover:text-gray-800">Gallery</a>
+                <a href="#" class="nav-link active text-gray-800 font-medium">About</a>
+                <a href="about_ar.html" class="nav-link text-gray-600 hover:text-gray-800 flex items-center space-x-1">
+                    <i style="margin-left: 20px;"class="fas fa-globe"></i>
+                    <span >العربية</span>
+                </a>
+            </div>
+            
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-gray-600 hover:text-gray-800 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <div class="container mx-auto px-4 py-2 space-y-3">
+                <a href="home.html" class="block py-2 text-gray-600 hover:text-gray-800">Home</a>
+                <a href="social.html" class="block py-2 text-gray-600 hover:text-gray-800">Social Development</a>
+                <a href="infrastructure.html" class="block py-2 text-gray-600 hover:text-gray-800">Infrastructure</a>
+                <a href="gallery.html" class="block py-2 text-gray-600 hover:text-gray-800">Gallery</a>
+                <a href="#" class="block py-2 text-gray-800 font-medium">About</a>
+                <a href="about_ar.html" class="block py-2 text-gray-600 hover:text-gray-800 flex items-center">
+                    <i class="fas fa-globe mr-2"></i> العربية
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-32 pb-20 hero-pattern pyramid-bg">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-6">About Our Team</h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">From Nile Egyptian International Schools (NIES) - Grade 9A Jasmine Branch</p>
+        </div>
+    </header>
+
+    <!-- Team Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">Meet Our Team</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Mentor Card -->
+                <div class="team-card">
+                    <div class="team-card-inner">
+                        <div class="team-card-front bg-white rounded-xl shadow-lg overflow-hidden">
+                            <div class="h-64 bg-red-100 flex items-center justify-center">
+                                <i class="fas fa-user-tie text-6xl text-red-700"></i>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-2xl font-bold text-gray-800 mb-2">Ahmed Said</h3>
+                                <p class="text-gray-600 font-medium mb-4">Mentor</p>
+                                <div class="flex justify-center space-x-4">
+                                    <a href="#" class="text-gray-500 hover:text-red-700">
+                                        <i class="fab fa-facebook-f text-xl"></i>
+                                    </a>
+                                    <a href="#" class="text-gray-500 hover:text-red-700">
+                                        <i class="fab fa-twitter text-xl"></i>
+                                    </a>
+                                    <a href="#" class="text-gray-500 hover:text-red-700">
+                                        <i class="fab fa-linkedin-in text-xl"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-card-back bg-red-700 text-white">
+                            <h3 class="text-2xl font-bold mb-4 px-6 pt-6">Ahmed Said</h3>
+                            <p class="text-center mb-4 px-6">Our dedicated mentor who guided us through this project with his valuable experience and knowledge.</p>
+                            <p class="text-center font-medium px-6 pb-6">Arabic Dapartement</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Yassin Card -->
+                <div class="team-card">
+                    <div class="team-card-inner">
+                        <div class="team-card-front bg-white rounded-xl shadow-lg overflow-hidden">
+                            <div class="h-64 bg-blue-100 flex items-center justify-center">
+                                <i class="fas fa-user-graduate text-6xl text-blue-700"></i>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-2xl font-bold text-gray-800 mb-2">Yassin Ramy</h3>
+                                <p class="text-gray-600 font-medium mb-4">Team Member</p>
+                                <div class="flex justify-center space-x-4">
+                                    <a href="#" class="text-gray-500 hover:text-blue-700">
+                                        <i class="fab fa-facebook-f text-xl"></i>
+                                    </a>
+                                    <a href="#" class="text-gray-500 hover:text-blue-700">
+                                        <i class="fab fa-twitter text-xl"></i>
+                                    </a>
+                                    <a href="#" class="text-gray-500 hover:text-blue-700">
+                                        <i class="fab fa-instagram text-xl"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-card-back bg-blue-700 text-white">
+                            <h3 class="text-2xl font-bold mb-4 px-6 pt-6">Yassin Ramy</h3>
+                            <p class="text-center mb-4 px-6">Focused on the technical implementation and design aspects of our project showcasing Egypt's progress.</p>
+                            <p class="text-center font-medium px-6 pb-6">Grade 9A - NIES Jasmine</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Daniel Card -->
+                <div class="team-card">
+                    <div class="team-card-inner">
+                        <div class="team-card-front bg-white rounded-xl shadow-lg overflow-hidden">
+                            <div class="h-64 bg-emerald-100 flex items-center justify-center">
+                                <i class="fas fa-user-graduate text-6xl text-emerald-700"></i>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-2xl font-bold text-gray-800 mb-2">Daniel Hany</h3>
+                                <p class="text-gray-600 font-medium mb-4">Team Member</p>
+                                <div class="flex justify-center space-x-4">
+                                    <a href="#" class="text-gray-500 hover:text-emerald-700">
+                                        <i class="fab fa-facebook-f text-xl"></i>
+                                    </a>
+                                    <a href="#" class="text-gray-500 hover:text-emerald-700">
+                                        <i class="fab fa-twitter text-xl"></i>
+                                    </a>
+                                    <a href="#" class="text-gray-500 hover:text-emerald-700">
+                                        <i class="fab fa-instagram text-xl"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-card-back bg-emerald-700 text-white">
+                            <h3 class="text-2xl font-bold mb-4 px-6 pt-6">Daniel Hany</h3>
+                            <p class="text-center mb-4 px-6">Passionate about Egypt's development and contributed significantly to the research and content creation.</p>
+                            <p class="text-center font-medium px-6 pb-6">Grade 9A - NIES Jasmine</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- School Info Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/3 bg-red-700 flex items-center justify-center p-8">
+                        <i class="fas fa-school text-8xl text-white"></i>
+                    </div>
+                    <div class="md:w-2/3 p-8">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-4">Nile Egyptian International Schools</h2>
+                        <h3 class="text-xl text-red-700 font-medium mb-6">Grade 9A - Jasmine Branch</h3>
+                        <p class="text-gray-600 mb-4">We are proud students of NIES, one of Egypt's leading educational institutions that fosters innovation and patriotism.</p>
+                        <p class="text-gray-600 mb-6">Our project "Egypt's Triumph" showcases the remarkable progress our nation has made from 2014-2024 in various sectors including infrastructure, social development, and more.</p>
+                        <div class="flex items-center text-gray-500">
+                            <i class="fas fa-map-marker-alt mr-2 text-red-700"></i>
+                            <span>Jasmine Branch, Cairo, Egypt</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Info Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">About Our Project</h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-gray-50 rounded-xl p-8 mb-8">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-lightbulb text-yellow-500 mr-3"></i>
+                        Project Vision
+                    </h3>
+                    <p class="text-gray-600">To document and showcase Egypt's developmental achievements over the past decade, highlighting the nation's progress in infrastructure, social services, and economic growth.</p>
+                </div>
+                
+                <div class="bg-gray-50 rounded-xl p-8 mb-8">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-bullseye text-red-700 mr-3"></i>
+                        Our Mission
+                    </h3>
+                    <p class="text-gray-600">To create a comprehensive digital platform that educates both Egyptians and international audiences about the transformation Egypt has undergone, using verified data and visual storytelling.</p>
+                </div>
+                
+                <div class="bg-gray-50 rounded-xl p-8">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-hands-helping text-blue-600 mr-3"></i>
+                        Team Approach
+                    </h3>
+                    <p class="text-gray-600 mb-4">Working under the guidance of our mentor Mr. Ahmed Said, we divided responsibilities based on our strengths:</p>
+                    <ul class="list-disc pl-5 text-gray-600 space-y-2">
+                        <li>Yassin handled web design and technical implementation
+                        </li>
+                        <li>Daniel focused on research and content development
+                        </li>
+                        <li>Both collaborated on data collection and verification</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-10 h-10">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-full h-full">
+                                <img style="transform: translateY(-30px);" class="flag" src="eg.png" alt="egypt's flag">
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold">Egypt's Triumph</h3>
+                    </div>
+                    <p class="text-gray-400">Celebrating a decade of remarkable progress and transformation across Egypt.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="home.html" class="text-gray-400 hover:text-white transition duration-300">Home</a></li>
+                        <li><a href="social.html" class="text-gray-400 hover:text-white transition duration-300">Social Development</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Infrastructure</a></li>
+                        <li><a href="gallery.html" class="text-gray-400 hover:text-white transition duration-300">Gallery</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition duration-300">About</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2024 Egypt's Triumph. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

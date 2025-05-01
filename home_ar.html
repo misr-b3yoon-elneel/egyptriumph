@@ -1,0 +1,463 @@
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>انتصارات مصر | 2014-2024</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Tajawal', serif;
+            font-weight: 700;
+        }
+        
+        .hero-pattern {
+            background-color: #f9f7f7;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e4e2e2' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .pyramid-bg {
+            position: relative;
+        }
+        
+        .pyramid-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' width='100' height='100' opacity='0.05'%3E%3Cpolygon points='50,10 90,90 10,90' fill='%23000000'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        .egypt-gradient {
+            background: linear-gradient(135deg, rgba(206,17,38,0.05) 0%, rgba(255,255,255,0.1) 50%, rgba(0,0,0,0.05) 100%);
+        }
+        
+        .flag{
+            transform: translateY(-30px);
+        }
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            right: 0;
+            background-color: #ce1126;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .active::after {
+            width: 100%;
+        }
+        
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* RTL specific adjustments */
+        .timeline-item:nth-child(odd) .timeline-content {
+            text-align: left;
+            padding-left: 2rem;
+            padding-right: 0;
+        }
+        .timeline-item:nth-child(even) .timeline-content {
+            text-align: right;
+            padding-right: 2rem;
+            padding-left: 0;
+        }
+        .arrow::after {
+            content: "←";
+        }
+    </style>
+    <!-- Rest of the style tag content remains the same -->
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full z-10">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-full h-full flag">
+                        <img class="flag" src="eg.png" alt="علم مصر">
+                    </svg>
+                </div>
+                <h1 class="text-2xl font-bold text-gray-800" style="margin-right: 25px;">انتصارات مصر</h1>
+            </div>
+            
+            <div class="hidden md:flex space-x-8">
+
+                <a href="#" class="nav-link active text-gray-800 font-medium">الرئيسية</a>
+                <a href="social_ar.html" class="nav-link text-gray-600 hover:text-gray-800" style="margin-right: 25px;">التنمية الاجتماعية</a>
+                <a href="infrastructure_ar.html" class="nav-link text-gray-600 hover:text-gray-800">البنية التحتية</a>
+                <a href="gallery_ar.html" class="nav-link text-gray-600 hover:text-gray-800">معرض الصور</a>
+                <a href="about_ar.html" class="nav-link text-gray-600 hover:text-gray-800">عنا</a>
+                <a href="home.html" class="nav-link text-gray-600 hover:text-gray-800 flex items-center space-x-1">
+                    <i class="fas fa-globe"></i>
+                    <span style="margin-right: 3px;">English </span>
+                  </a>
+            </div>
+            
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-gray-600 hover:text-gray-800 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <div class="container mx-auto px-4 py-2 space-y-3">
+
+                <a href="#" class="block py-2 text-gray-800 font-medium">الرئيسية</a>
+                <a href="social_ar.html" class="block py-2 text-gray-600 hover:text-gray-800">تنمية الانسان</a><br>
+                <a href="infrastructure.html" class="block py-2 text-gray-600 hover:text-gray-800">>التنمية الاجتماعية</a>
+                <a href="gallery.html" class="block py-2 text-gray-600 hover:text-gray-800">معرض الصور</a>
+                <a href="about.html" class="block py-2 text-gray-600 hover:text-gray-800">عنا</a>
+                <a href="home.html" class="block py-2 text-gray-600 hover:text-gray-800 flex items-center">
+                    <i class="fas fa-globe mr-2"></i> English </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header data-aos="fade-up"class="pt-24 pb-16 hero-pattern pyramid-bg">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h1 data-aos="fade-up"class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 leading-tight">عقد من <span class="text-red-700">الانجازات المصرية</span></h1>
+                    <p data-aos="fade-up"class="mt-4 text-xl text-gray-600">احتفالاً بعقد من التقدم والتحول الملحوظ في التنمية الاجتماعية والبنية التحتية.</p>
+                    <div data-aos="fade-up"class="mt-8 flex flex-wrap gap-4">
+                        <a href="social_ar.html" class="px-6 py-3 bg-red-700 text-white font-medium rounded-md hover:bg-red-800 transition duration-300 shadow-md">التنمية الاجتماعية</a>
+                        <a href="infrastructure_ar.html" class="px-6 py-3 bg-gray-800 text-white font-medium rounded-md hover:bg-gray-900 transition duration-300 shadow-md">البنية التحتية</a>
+                    </div>
+                </div>
+                <div data-aos="fade-up"class="md:w-1/2 flex justify-center">
+                    <div class="relative w-full max-w-md">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" class="w-full h-auto">
+                            <!-- Egypt Map Silhouette -->
+                            <path d="M400,100 C550,150 650,300 600,450 C550,600 400,550 300,500 C200,450 150,350 200,250 C250,150 350,80 400,100 Z" fill="#f0f0f0" stroke="#ce1126" stroke-width="8"></path>
+                            <!-- Nile River -->
+                            <path d="M380,120 C400,200 410,300 390,400 C380,450 370,500 350,550" fill="none" stroke="#3b82f6" stroke-width="6"></path>
+                            <!-- Landmarks -->
+                            <polygon points="300,300 350,200 400,300" fill="#c09300" stroke="#000" stroke-width="2"></polygon>
+                            <polygon points="350,320 400,220 450,320" fill="#c09300" stroke="#000" stroke-width="2"></polygon>
+                            <polygon points="400,340 450,240 500,340" fill="#c09300" stroke="#000" stroke-width="2"></polygon>
+                            <!-- Development Icons -->
+                            <circle cx="300" cy="200" r="20" fill="#10b981"></circle>
+                            <circle cx="500" cy="250" r="20" fill="#3b82f6"></circle>
+                            <circle cx="450" cy="400" r="20" fill="#f59e0b"></circle>
+                            <circle cx="350" cy="450" r="20" fill="#ef4444"></circle>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Key Highlights -->
+    <section data-aos="fade-up"class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">أبرز ملامح التقدم</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Social Development Card -->
+                <div data-aos="fade-up"class="card bg-gradient-to-br from-red-50 to-white rounded-lg shadow-md p-6 border border-red-100">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-user-graduate text-2xl text-red-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">إصلاح التعليم</h3>
+                    <p class="text-gray-600">تحسينات كبيرة في البنية التحتية التعليمية وتطوير المناهج وإتاحة التعليم في جميع أنحاء مصر.</p>
+                    <a href="social_ar.html#education" class="mt-4 inline-block text-red-700 font-medium hover:underline arrow">المزيد</a>
+                </div>
+                
+                <!-- Healthcare Card -->
+                <div data-aos="fade-up"class="card bg-gradient-to-br from-blue-50 to-white rounded-lg shadow-md p-6 border border-blue-100">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-heartbeat text-2xl text-blue-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">التقدم في الرعاية الصحية</h3>
+                    <p class="text-gray-600">توسيع نطاق التغطية الصحية وإنشاء مستشفيات جديدة وتحسين الخدمات الطبية لملايين المصريين.</p>
+                    <a href="social_ar.html#healthcare" class="mt-4 inline-block text-blue-700 font-medium hover:underline arrow">المزيد</a>
+                </div>
+                
+                <!-- Infrastructure Card -->
+                <div data-aos="fade-up"class="card bg-gradient-to-br from-amber-50 to-white rounded-lg shadow-md p-6 border border-amber-100">
+                    <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-road text-2xl text-amber-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">شبكات الطرق</h3>
+                    <p class="text-gray-600">آلاف الكيلومترات من الطرق الجديدة التي تربط المدن والمناطق الريفية، مما يقلل وقت السفر ويعزز التجارة.</p>
+                    <a href="infrastructure_ar.html#roads" class="mt-4 inline-block text-amber-700 font-medium hover:underline arrow">المزيد</a>
+                </div>
+                
+                <!-- New Cities Card -->
+                <div data-aos="fade-up"class="card bg-gradient-to-br from-emerald-50 to-white rounded-lg shadow-md p-6 border border-emerald-100">
+                    <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-city text-2xl text-emerald-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">مراكز حضرية جديدة</h3>
+                    <p class="text-gray-600">تطوير مدن جديدة بما في ذلك العاصمة الإدارية الجديدة، مما يوفر مساحات معيشة حديثة وفرص جديدة.</p>
+                    <a href="infrastructure_ar.html#cities" class="mt-4 inline-block text-emerald-700 font-medium hover:underline arrow">المزيد</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section data-aos="fade-up"class="py-16 bg-gray-50 egypt-gradient">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">عقد من التحول</h2>
+            
+            <div class="relative">
+                <!-- Timeline Line -->
+                <div data-aos="zoom-in"class="hidden md:block absolute right-1/2 transform translate-x-1/2 h-full w-1 bg-red-200"></div>
+                
+                <!-- Timeline Items -->
+                <div class="space-y-12">
+                    <!-- 2014 -->
+                    <div data-aos="fade-up"class="flex flex-col md:flex-row items-center timeline-item">
+                        <div class="md:w-1/2 md:pl-8 mb-4 md:mb-0">
+                            <div class="bg-white p-6 rounded-lg shadow-md timeline-content">
+                                <h3 class="text-xl font-bold text-red-700">2014</h3>
+                                <p class="text-gray-600 mt-2">إطلاق إصلاحات اقتصادية كبرى ومشاريع بنية تحتية لإنعاش الاقتصاد المصري.</p>
+                            </div>
+                        </div>
+                        <div class="md:w-1/2 md:pr-8 hidden md:block"></div>
+                    </div>
+                    
+                    <!-- 2016 -->
+                    <div data-aos="fade-up"class="flex flex-col md:flex-row items-center timeline-item">
+                        <div class="md:w-1/2 md:pl-8 hidden md:block"></div>
+                        <div class="md:w-1/2 md:pr-8">
+                            <div class="bg-white p-6 rounded-lg shadow-md timeline-content">
+                                <h3 class="text-xl font-bold text-red-700">2016</h3>
+                                <p class="text-gray-600 mt-2">إعلان مشروع العاصمة الإدارية الجديدة وتوسيع قناة السويس.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 2018 -->
+                    <div data-aos="fade-up"class="flex flex-col md:flex-row items-center timeline-item">
+                        <div class="md:w-1/2 md:pl-8 mb-4 md:mb-0">
+                            <div class="bg-white p-6 rounded-lg shadow-md timeline-content">
+                                <h3 class="text-xl font-bold text-red-700">2018</h3>
+                                <p class="text-gray-600 mt-2">تنفيذ مبادرات صحية شاملة بما في ذلك حملة "100 مليون صحة".</p>
+                            </div>
+                        </div>
+                        <div class="md:w-1/2 md:pr-8 hidden md:block"></div>
+                    </div>
+                    
+                    <!-- 2020 -->
+                    <div data-aos="fade-up"class="flex flex-col md:flex-row items-center timeline-item">
+                        <div class="md:w-1/2 md:pl-8 hidden md:block"></div>
+                        <div class="md:w-1/2 md:pr-8">
+                            <div class="bg-white p-6 rounded-lg shadow-md timeline-content">
+                                <h3 class="text-xl font-bold text-red-700">2020</h3>
+                                <p class="text-gray-600 mt-2">تسريع التحول الرقمي ودمج التكنولوجيا التعليمية في جميع أنحاء البلاد.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 2022 -->
+                    <div data-aos="fade-up"class="flex flex-col md:flex-row items-center timeline-item">
+                        <div class="md:w-1/2 md:pl-8 mb-4 md:mb-0">
+                            <div class="bg-white p-6 rounded-lg shadow-md timeline-content">
+                                <h3 class="text-xl font-bold text-red-700">2022</h3>
+                                <p class="text-gray-600 mt-2">إنجاز شبكات نقل كبرى ومشاريع طاقة متجددة في جميع أنحاء مصر.</p>
+                            </div>
+                        </div>
+                        <div class="md:w-1/2 md:pr-8 hidden md:block"></div>
+                    </div>
+                    
+                    <!-- 2024 -->
+                    <div data-aos="fade-up"class="flex flex-col md:flex-row items-center timeline-item">
+                        <div class="md:w-1/2 md:pl-8 hidden md:block"></div>
+                        <div class="md:w-1/2 md:pr-8">
+                            <div class="bg-white p-6 rounded-lg shadow-md timeline-content">
+                                <h3 class="text-xl font-bold text-red-700">2024</h3>
+                                <p class="text-gray-600 mt-2">الاحتفال بعقد من الإنجازات مع استمرار التركيز على التنمية المستدامة والرعاية الاجتماعية.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section data-aos="fade-up"class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">مشاريع مميزة</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Social Development Project -->
+                <div data-aos="fade-up"class="bg-gradient-to-br from-red-50 to-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="h-48 bg-red-700 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100" class="w-32 h-32">
+                            <circle cx="50" cy="50" r="20" fill="#ffffff"></circle>
+                            <circle cx="100" cy="50" r="20" fill="#ffffff"></circle>
+                            <circle cx="150" cy="50" r="20" fill="#ffffff"></circle>
+                            <path d="M50,50 L100,30 L150,50" fill="none" stroke="#ffffff" stroke-width="3"></path>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">مبادرة حياة كريمة</h3>
+                        <p class="text-gray-600 mb-4">مشروع تنموي اجتماعي شامل يستهدف المجتمعات الريفية الأكثر احتياجًا في مصر، لتحسين ظروف المعيشة للملايين.</p>
+                        <a href="social_ar.html#hayah-karima" class="inline-block px-6 py-2 bg-red-700 text-white font-medium rounded-md hover:bg-red-800 transition duration-300">استكشف</a>
+                    </div>
+                </div>
+                
+                <!-- Infrastructure Project -->
+                <div data-aos="fade-up"class="bg-gradient-to-br from-gray-50 to-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gray-800 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100" class="w-32 h-32">
+                            <rect x="30" y="40" width="20" height="60" fill="#ffffff"></rect>
+                            <rect x="60" y="30" width="20" height="70" fill="#ffffff"></rect>
+                            <rect x="90" y="20" width="20" height="80" fill="#ffffff"></rect>
+                            <rect x="120" y="10" width="20" height="90" fill="#ffffff"></rect>
+                            <rect x="150" y="30" width="20" height="70" fill="#ffffff"></rect>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">العاصمة الإدارية الجديدة</h3>
+                        <p class="text-gray-600 mb-4">مشروع تنموي حضاري طموح لإنشاء مدينة حديثة ومستدامة لتكون المركز الإداري والمالي الجديد لمصر.</p>
+                        <a href="infrastructure_ar.html#new-capital" class="inline-block px-6 py-2 bg-gray-800 text-white font-medium rounded-md hover:bg-gray-900 transition duration-300">استكشف</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section data-aos="fade-up"class="py-16 bg-red-700 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">اكتشف تحول مصر</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">اكتشف رحلة التقدم والتنمية الرائعة التي شكلت مصر خلال العقد الماضي.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a data-aos="zoom-in"href="social_ar.html" class="px-6 py-3 bg-white text-red-700 font-medium rounded-md hover:bg-gray-100 transition duration-300 shadow-md">التنمية الاجتماعية</a>
+                <a data-aos="zoom-in"href="infrastructure_ar.html" class="px-6 py-3 bg-gray-800 text-white font-medium rounded-md hover:bg-gray-900 transition duration-300 shadow-md">البنية التحتية</a>
+                <a data-aos="zoom-in"href="gallery_ar.html" class="px-6 py-3 border-2 border-white text-white font-medium rounded-md hover:bg-red-800 transition duration-300">معرض الصور</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-10 h-10">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-full h-full">
+                                <img class="flag" src="eg.png" alt="egypr's flag"></svg>
+                        </div>
+                        <h3 class="text-xl font-bold">انتصارات مصر</h3>
+                    </div>
+                    <p class="text-gray-400">احتفالاً بعقد من التقدم والتحول الملحوظ في جميع أنحاء مصر.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">روابط سريعة</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">الرئيسية</a></li>
+                        <li><a href="social_ar.html" class="text-gray-400 hover:text-white transition duration-300">التنمية الاجتماعية</a></li>
+                        <li><a href="infrastructure_ar.html" class="text-gray-400 hover:text-white transition duration-300">البنية التحتية</a></li>
+                        <li><a href="gallery_ar.html" class="text-gray-400 hover:text-white transition duration-300">معرض الصور</a></li>
+                        <li><a href="about_ar.html" class="text-gray-400 hover:text-white transition duration-300">حول المشروع</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">تواصل معنا</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2024 انتصارات مصر. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+    
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+    <script>
+        window.onbeforeunload = function () {
+          window.scrollTo(0, 0);
+        };
+      </script>
+      
+</body>
+</html>

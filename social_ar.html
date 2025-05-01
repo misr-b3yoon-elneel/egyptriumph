@@ -1,0 +1,691 @@
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>التنمية الاجتماعية | انتصار مصر</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-weight: 700;
+        }
+        
+        .hero-pattern {
+            background-color: #f9f7f7;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e4e2e2' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .pyramid-bg {
+            position: relative;
+        }
+        
+        .pyramid-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' width='100' height='100' opacity='0.05'%3E%3Cpolygon points='50,10 90,90 10,90' fill='%23000000'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        .egypt-gradient {
+            background: linear-gradient(135deg, rgba(206,17,38,0.05) 0%, rgba(255,255,255,0.1) 50%, rgba(0,0,0,0.05) 100%);
+        }
+        
+        .flag {
+            transform: translateY(-30px);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            right: 0;
+            background-color: #ce1126;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .active::after {
+            width: 100%;
+        }
+        
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .comparison-slider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    border-radius: 10px;
+    width: 4px;
+    background: white;
+    left: 50%; /* Changed from right to left */
+    transform: translateX(-50%);
+    z-index: 3;
+    cursor: ew-resize;
+    touch-action: none; /* Prevent default touch behavior */
+}
+
+.comparison-before {
+    width: 50%;
+    overflow: hidden;
+    z-index: 2;
+    border-right: 2px solid white;
+    pointer-events: none; /* Prevent content interference */
+}
+
+.comparison-container {
+    user-select: none; /* Prevent text selection while dragging */
+}
+        
+        .comparison-before, .comparison-after {
+
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .comparison-before {
+            width: 50%;
+            overflow: hidden;
+            z-index: 2;
+            border-right: 2px solid white;
+        }
+        
+        .comparison-slider {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: white;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            cursor: ew-resize;
+        }
+        
+        .comparison-slider::before {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #ce1126;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .comparison-label {
+            position: absolute;
+            padding: 0.25rem 0.5rem;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            font-size: 0.75rem;
+            border-radius: 0.25rem;
+            z-index: 4;
+        }
+        
+        .before-label {
+            left: 10px;
+            top: 10px;
+        }
+        
+        .after-label {
+            right: 10px;
+            top: 10px;
+        }
+        
+        .slider-note {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            z-index: 5;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .slider-note.hidden {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full z-10">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-full h-full flag">
+                        <img class="flag" src="eg.png" alt="علم مصر" style="margin-left: 25px;">
+                    </svg>
+                </div>
+                <h1 class="text-2xl font-bold text-gray-800">انتصار مصر</h1>
+            </div>
+            
+            <div class="hidden md:flex space-x-8">
+                <a href="home_ar.html" class="nav-link text-gray-600 hover:text-gray-800">الرئيسية</a>
+                <a href="#" class="nav-link active text-gray-800 margin-left font-medium" style="margin-right: 20px;">التنمية الاجتماعية</a>
+                <a href="infrastructure_ar.html" class="nav-link text-gray-600 hover:text-gray-800">البنية التحتية</a>
+                <a href="gallery_ar.html" class="nav-link text-gray-600 hover:text-gray-800">معرض الصور</a>
+                <a href="about_ar.html" class="nav-link text-gray-600 hover:text-gray-800">عنا</a>
+                <a href="social.html" class="nav-link text-gray-600 hover:text-gray-800 flex items-center space-x-1">
+                    <i class="fas fa-globe"></i>
+                    <span style="margin-right: 3px;">English</span>
+                </a>
+            </div>
+            
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-gray-600 hover:text-gray-800 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <div class="container mx-auto px-4 py-2 space-y-3">
+                <a href="home_ar.html" class="block py-2 text-gray-600 hover:text-gray-800">الرئيسية</a>
+                <a href="#" class="block py-2 text-gray-800 font-medium">التنمية الاجتماعية</a>
+                <a href="infrastructure_ar.html" class="block py-2 text-gray-600 hover:text-gray-800">البنية التحتية</a>
+                <a href="gallery_ar.html" class="block py-2 text-gray-600 hover:text-gray-800">معرض الصور</a>
+                <a href="about_ar.html" class="block py-2 text-gray-600 hover:text-gray-800">عنا</a>
+                <a href="social.html" class="block py-2 text-gray-600 hover:text-gray-800 flex items-center">
+                    <i class="fas fa-globe ml-2"></i> English
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header data-aos="fade-up" class="pt-24 pb-16 hero-pattern pyramid-bg">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:order-2">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 leading-tight"><span class="text-red-700">التنمية</span> الاجتماعية</h1>
+                    <p class="mt-4 text-xl text-gray-600">تحسين حياة المواطنين من خلال التعليم والرعاية الصحية وبرامج تنمية المجتمع في جميع أنحاء مصر.</p>
+                    <div class="mt-8">
+                        <a href="#hayah-karima" class="px-6 py-3 bg-red-700 text-white font-medium rounded-md hover:bg-red-800 transition duration-300 shadow-md">مبادرة حياة كريمة</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center md:order-1">
+                    <div class="relative w-full max-w-md">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" class="w-full h-auto">
+                            <!-- Egypt Map with Social Icons -->
+                            <path d="M400,100 C550,150 650,300 600,450 C550,600 400,550 300,500 C200,450 150,350 200,250 C250,150 350,80 400,100 Z" fill="#f0f0f0" stroke="#ce1126" stroke-width="8"></path>
+                            <!-- Social Development Icons -->
+                            <circle cx="300" cy="200" r="30" fill="#10b981"></circle>
+                            <text x="300" y="200" font-family="Arial" font-size="20" fill="white" text-anchor="middle" dominant-baseline="middle">🏫</text>
+                            
+                            <circle cx="500" cy="250" r="30" fill="#3b82f6"></circle>
+                            <text x="500" y="250" font-family="Arial" font-size="20" fill="white" text-anchor="middle" dominant-baseline="middle">🏥</text>
+                            
+                            <circle cx="450" cy="400" r="30" fill="#f59e0b"></circle>
+                            <text x="450" y="400" font-family="Arial" font-size="20" fill="white" text-anchor="middle" dominant-baseline="middle">👨‍👩‍👧‍👦</text>
+                            
+                            <circle cx="350" cy="450" r="30" fill="#ef4444"></circle>
+                            <text x="350" y="450" font-family="Arial" font-size="20" fill="white" text-anchor="middle" dominant-baseline="middle">💧</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Key Areas Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">مجالات التنمية الاجتماعية الرئيسية</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Education Card -->
+                <div data-aos="fade-up" class="card bg-gradient-to-br from-red-50 to-white rounded-lg shadow-md p-6 border border-red-100">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-school text-2xl text-red-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2" id="education">إصلاح التعليم</h3>
+                    <p class="text-gray-600">تحديث شامل لنظام التعليم في مصر يشمل تطوير المناهج، تدريب المعلمين، وتحسين البنية التحتية للمدارس.</p>
+                    <a href="#education-comparison" class="mt-4 inline-block text-red-700 font-medium hover:underline">شاهد التحسينات ←</a>
+                </div>
+                
+                <!-- Healthcare Card -->
+                <div data-aos="fade-up" class="card bg-gradient-to-br from-blue-50 to-white rounded-lg shadow-md p-6 border border-blue-100">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-hospital text-2xl text-blue-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2" id="healthcare">تطوير الرعاية الصحية</h3>
+                    <p class="text-gray-600">مبادرات صحية على مستوى البلاد تشمل مستشفيات جديدة، تأمين صحي شامل، وحملات للوقاية من الأمراض.</p>
+                    <a href="#healthcare-comparison" class="mt-4 inline-block text-blue-700 font-medium hover:underline">شاهد التحسينات ←</a>
+                </div>
+                
+                <!-- Community Card -->
+                <div data-aos="fade-up" class="card bg-gradient-to-br from-emerald-50 to-white rounded-lg shadow-md p-6 border border-emerald-100">
+                    <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-home text-2xl text-emerald-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">تنمية المجتمع</h3>
+                    <p class="text-gray-600">برامج تركز على التنمية الريفية، تمكين المرأة، والقضاء على الفقر لتحسين جودة الحياة.</p>
+                    <a href="#hayah-karima" class="mt-4 inline-block text-emerald-700 font-medium hover:underline">المزيد ←</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hayah Karima Initiative -->
+    <section data-aos="fade-up" class="py-16 bg-gray-50 egypt-gradient" id="hayah-karima">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pl-8">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">مبادرة حياة كريمة</h2>
+                    <p class="text-gray-600 mb-4">مبادرة "حياة كريمة" هي أكبر مشروع تنموي ريفي في مصر، تهدف إلى تحسين حياة أكثر من 58 مليون مصري في المناطق الريفية.</p>
+                    <p class="text-gray-600 mb-6">باستثمارات تتجاوز 700 مليار جنيه، تركز المبادرة على تحسين ظروف المعيشة من خلال البنية التحتية، الرعاية الصحية، التعليم، وفرص العمل.</p>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-bold text-red-700 mb-1">4500+</h4>
+                            <p class="text-sm text-gray-600">قرية تم تطويرها</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-bold text-red-700 mb-1">1200+</h4>
+                            <p class="text-sm text-gray-600">مدرسة جديدة</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-bold text-red-700 mb-1">1500+</h4>
+                            <p class="text-sm text-gray-600">وحدة طبية</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-bold text-red-700 mb-1">58 مليون</h4>
+                            <p class="text-sm text-gray-600">مستفيد</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                        <div class="h-64 bg-white-700 flex items-center justify-center">
+                            <img src="imgs/000jpg-0000000jpg.webp" style="height: 250px !important;" height="250px" alt="حياة كريمة">
+                        </div>
+                        <div class="p-6 bg-blue-100">
+                            <h3 class="text-2xl font-bold mb-4">تحسين الريف المصري</h3>
+                            <ul class="space-y-3 text-gray-600">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-red-700 mt-1 ml-2"></i>
+                                    <span>تطوير شامل للبنية التحتية الريفية</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-red-700 mt-1 ml-2"></i>
+                                    <span>توفير مياه شرب وصرف صحي للجميع</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-red-700 mt-1 ml-2"></i>
+                                    <span>خدمات صحية عالية الجودة في المناطق النائية</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-red-700 mt-1 ml-2"></i>
+                                    <span>منشآت تعليمية حديثة وتعلم رقمي</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-red-700 mt-1 ml-2"></i>
+                                    <span>برامج تمكين اقتصادي</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Comparison -->
+    <section class="py-16 bg-white" id="education-comparison">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl text-red-700 md:text-4xl font-bold text-center mb-12">تحول التعليم</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div data-aos="fade-left">
+                    <h3 class="text-2xl font-bold mb-4">قبل وبعد: المدارس في مصر</h3>
+                    <p class="text-gray-600 mb-6">شهد العقد الماضي تحسينات ملحوظة في البنية التحتية التعليمية والجودة. من مباني متداعية إلى بيئات تعليمية حديثة، شهدت مدارس مصر تحولاً جذرياً.</p>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800 mb-2">قبل 2014:</h4>
+                            <ul class="text-gray-600 space-y-1">
+                                <li class="flex items-start">
+                                    <i class="fas fa-times text-red-700 mt-1 ml-2"></i>
+                                    <span>فصول مزدحمة (أكثر من 50 طالب في الفصل)</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-times text-red-700 mt-1 ml-2"></i>
+                                    <span>نقص المرافق الأساسية مثل المعامل والمكتبات</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-times text-red-700 mt-1 ml-2"></i>
+                                    <span>مناهج وطرق تدريس قديمة</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold text-gray-800 mb-2">بعد 2024:</h4>
+                            <ul class="text-gray-600 space-y-1">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-emerald-700 mt-1 ml-2"></i>
+                                    <span>تم بناء أكثر من 14,000 فصل جديد</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-emerald-700 mt-1 ml-2"></i>
+                                    <span>فصول ذكية بأدوات تعليم رقمية</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-emerald-700 mt-1 ml-2"></i>
+                                    <span>مناهج محدثة تركز على التفكير النقدي</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-emerald-700 mt-1 ml-2"></i>
+                                    <span>برامج تدريبية لأكثر من 500,000 معلم</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div data-aos="fade-right" class="md:order-1">
+                    <div class="comparison-container"  style="height: 400px; border-radius: 2px;">
+                        <div class="comparison-before">
+                            <img style="border-radius: 2px;" src="imgs/th (4).jfif" alt="المستشفى قبل التطوير" class="w-full h-full object-cover">
+                            <span class="comparison-label before-label">قبل</span>
+                        </div>
+                        <div class="comparison-after">
+                            <img style="border-radius: 2px;" src="imgs/8926424011633857149.jpg" alt="المستشفى بعد التطوير" class="w-full h-full object-cover">
+                            <span class="comparison-label after-label">بعد</span>
+                        </div>
+                        <div class="comparison-slider"></div>
+                        <div class="slider-note">اسحب لرؤية الفرق →</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Healthcare Comparison -->
+    <section class="py-16 bg-gray-50" id="healthcare-comparison">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl text-red-700 md:text-4xl font-bold text-center mb-12">ثورة الرعاية الصحية</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div data-aos="fade-left" class="md:order-2">
+                    <h3 class="text-2xl font-bold mb-4">قبل وبعد: الرعاية الصحية في مصر</h3>
+                    <p class="text-gray-600 mb-6">شهد نظام الرعاية الصحية في مصر تطويراً شاملاً، مع مستشفيات جديدة، تأمين صحي شامل، ومبادرات صحية رائدة.</p>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800 mb-2">قبل 2014:</h4>
+                            <ul class="text-gray-600 space-y-1">
+                                <li class="flex items-start">
+                                    <i class="fas fa-times text-red-700 mt-1 ml-2"></i>
+                                    <span>صعوبة الوصول للرعاية الصحية في المناطق الريفية</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-times text-red-700 mt-1 ml-2"></i>
+                                    <span>مستشفيات عامة مزدحمة وغير مجهزة</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-times text-red-700 mt-1 ml-2"></i>
+                                    <span>ارتفاع معدلات الأمراض القابلة للوقاية</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold text-gray-800 mb-2">بعد 2024:</h4>
+                            <ul class="text-gray-600 space-y-1">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-emerald-700 mt-1 ml-2"></i>
+                                    <span>تنفيذ نظام التأمين الصحي الشامل</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-emerald-700 mt-1 ml-2"></i>
+                                    <span>125+ مستشفى جديد و1500 وحدة طبية</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-emerald-700 mt-1 ml-2"></i>
+                                    <span>حملة "100 مليون صحة" للكشف المبكر</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-emerald-700 mt-1 ml-2"></i>
+                                    <span>مراكز متخصصة لعلاج الأورام في جميع أنحاء البلاد</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div data-aos="fade-right" class="md:order-1">
+                    <div class="comparison-container" style="height: 400px;">
+                        <div class="comparison-before">
+                            <img src="imgs/bef.jpg" alt="المستشفى قبل التطوير" class="w-full h-full object-cover">
+                            <span class="comparison-label before-label">قبل</span>
+                        </div>
+                        <div class="comparison-after">
+                            <img src="imgs/af.jpg" alt="المستشفى بعد التطوير" class="w-full h-full object-cover">
+                            <span class="comparison-label after-label">بعد</span>
+                        </div>
+                        <div class="comparison-slider"></div>
+                        <div class="slider-note">اسحب لرؤية الفرق →</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- قسم آراء الناس (فيديو) -->
+<section class="py-16 bg-white" id="testimonials" dir="rtl">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-6">أصوات التغيير</h2>
+        <p class="text-xl text-gray-600 text-center max-w-3xl mx-auto mb-12">استمع إلى آراء المصريين حول كيف غيرت مشروعات التنمية مجتمعاتهم.</p>
+        
+        <div class="max-w-4xl mx-auto" data-aos="fade-up">
+            <!-- حاوية الفيديو -->
+            <div class="relative pb-[56.25%] rounded-lg overflow-hidden shadow-lg"> <!-- نسبة العرض إلى الارتفاع 16:9 -->
+                <!-- استبدل هذا بكود يوتيوب الفعلي -->
+                <!--put video of testimonals here-->
+            </div>
+            
+            <!-- معلومات الشهادة -->
+            <div class="mt-6 p-6 bg-gray-50 rounded-lg">
+                <h3 class="text-xl font-bold mb-2">آراء المواطنين</h3>
+                <p class="text-gray-600 mb-4">"مشروعات التنمية في منطقتنا جلبت مياه نظيفة، مدارس أفضل، وفرص عمل جديدة غيرت حياتنا للأفضل."</p>
+                <div class="flex items-center text-sm text-gray-500">
+                    <i class="fas fa-map-marker-alt ml-2 text-red-700"></i>
+                    <span>محافظات مختلفة، مصر</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- Call to Action -->
+    <section data-aos="fade-up" class="py-16 bg-red-700 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">اكتشف المزيد من الإنجازات</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">تعرف على كيف قامت مصر بتحويل بنيتها التحتية والمناطق الحضرية خلال العقد الماضي.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="infrastructure_ar.html" class="px-6 py-3 bg-white text-red-700 font-medium rounded-md hover:bg-gray-100 transition duration-300 shadow-md">مشاريع البنية التحتية</a>
+                <a href="gallery_ar.html" class="px-6 py-3 border-2 border-white text-white font-medium rounded-md hover:bg-red-800 transition duration-300">معرض الصور</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-10 h-10">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-full h-full">
+                                <img class="flag" src="eg.png" alt="علم مصر">
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold">انتصار مصر</h3>
+                    </div>
+                    <p class="text-gray-400">الاحتفال بعقد من التقدم والتحول الملحوظ في جميع أنحاء مصر.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">روابط سريعة</h4>
+                    <ul class="space-y-2">
+                        <li><a href="home_ar.html" class="text-gray-400 hover:text-white transition duration-300">الرئيسية</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">التنمية الاجتماعية</a></li>
+                        <li><a href="infrastructure_ar.html" class="text-gray-400 hover:text-white transition duration-300">البنية التحتية</a></li>
+                        <li><a href="gallery_ar.html" class="text-gray-400 hover:text-white transition duration-300">معرض الصور</a></li>
+                        <li><a href="about_ar.html" class="text-gray-400 hover:text-white transition duration-300">من نحن</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">تواصل معنا</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2024 انتصار مصر. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init();
+        
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+       // Image comparison slider
+function initComparisons() {
+    const sliders = document.querySelectorAll('.comparison-container');
+    
+    sliders.forEach(container => {
+        const before = container.querySelector('.comparison-before');
+        const slider = container.querySelector('.comparison-slider');
+        const note = container.querySelector('.slider-note');
+        let isDragging = false;
+        let noteHidden = false;
+        
+        function moveSlider(e) {
+            if (!isDragging) return;
+            
+            if (!noteHidden) {
+                note.classList.add('hidden');
+                noteHidden = true;
+            }
+            
+            const rect = container.getBoundingClientRect();
+            let x;
+            
+            if (e.type === 'mousemove') {
+                x = e.clientX - rect.left;
+            } else if (e.type === 'touchmove') {
+                x = e.touches[0].clientX - rect.left;
+            }
+            
+            // Constrain x to container bounds
+            x = Math.max(0, Math.min(x, rect.width));
+            
+            const percent = (x / rect.width) * 100;
+            before.style.width = percent + '%';
+            slider.style.left = percent + '%';
+        }
+        
+        // Mouse events
+        slider.addEventListener('mousedown', (e) => {
+            e.preventDefault();
+            isDragging = true;
+            note.classList.add('hidden');
+            noteHidden = true;
+        });
+        
+        window.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+        
+        window.addEventListener('mousemove', moveSlider);
+        
+        // Touch events
+        slider.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            isDragging = true;
+            note.classList.add('hidden');
+            noteHidden = true;
+        });
+        
+        window.addEventListener('touchend', () => {
+            isDragging = false;
+        });
+        
+        window.addEventListener('touchmove', moveSlider);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', initComparisons);
+    </script>
+</body>
+</html>
